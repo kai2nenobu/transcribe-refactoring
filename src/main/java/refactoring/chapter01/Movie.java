@@ -10,7 +10,7 @@ public class Movie {
 
     public Movie(String title, int priceCode) {
         _title = title;
-        _priceCode = priceCode;
+        setPriceCode(priceCode);
     }
 
     public int getPriceCode() {
@@ -51,5 +51,30 @@ public class Movie {
             return 2;
         else
             return 1;
+    }
+}
+
+abstract class Price {
+    abstract int getPriceCode();
+}
+
+class ChildrensPrice extends Price {
+    @Override
+    int getPriceCode() {
+        return Movie.CHILDRENS;
+    }
+}
+
+class NewReleasePrice extends Price {
+    @Override
+    int getPriceCode() {
+        return Movie.NEW_RELEASE;
+    }
+}
+
+class RegularPrice extends Price {
+    @Override
+    int getPriceCode() {
+        return Movie.REGULAR;
     }
 }
