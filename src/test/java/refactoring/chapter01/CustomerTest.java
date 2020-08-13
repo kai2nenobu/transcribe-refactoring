@@ -36,6 +36,18 @@ public class CustomerTest {
     }
 
     @Test
+    public void rent_a_regular_movie_for_one_day_html_statement() {
+        Rental rental = new Rental(new Movie("Regular Movie", Movie.REGULAR), 1);
+        sut.addRental(rental);
+        String actual = sut.htmlStatement();
+        String expected = "<H1>Rentals for <EM>Taro</EM></H1><P>\n" +
+                "Regular Movie: 2.0<BR>\n" +
+                "<P>You owe <EM>2.0</EM><P>\n" +
+                "On this rental you earned <EM>1</EM> frequent renter points<P>";
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void rent_a_regular_movie_for_three_days() {
         Rental rental = new Rental(new Movie("Regular Movie", Movie.REGULAR), 3);
         sut.addRental(rental);
