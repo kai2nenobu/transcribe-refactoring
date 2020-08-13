@@ -38,6 +38,22 @@ public class Movie {
     }
 
     double getCharge(int daysRented) {
+        return _price.getCharge(daysRented);
+    }
+
+    int getFrequentRenterPoints(int daysRented) {
+        // 新作を二日以上借りた場合はボーナスポイント
+        if ((this.getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
+            return 2;
+        else
+            return 1;
+    }
+}
+
+abstract class Price {
+    abstract int getPriceCode();
+
+    double getCharge(int daysRented) {
         double result = 0;
         switch (this.getPriceCode()) {
             case Movie.REGULAR:
@@ -56,18 +72,6 @@ public class Movie {
         }
         return result;
     }
-
-    int getFrequentRenterPoints(int daysRented) {
-        // 新作を二日以上借りた場合はボーナスポイント
-        if ((this.getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
-            return 2;
-        else
-            return 1;
-    }
-}
-
-abstract class Price {
-    abstract int getPriceCode();
 }
 
 class ChildrensPrice extends Price {
