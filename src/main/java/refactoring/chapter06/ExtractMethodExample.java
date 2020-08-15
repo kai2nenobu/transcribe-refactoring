@@ -12,10 +12,7 @@ public class ExtractMethodExample {
         Enumeration e = _orders.elements();
         double outstanding = 0.0;
 
-        // バナーの印刷
-        System.out.println("*************************");
-        System.out.println("***** Customer Owes *****");
-        System.out.println("*************************");
+        printBanner();
 
         // 未払金の計算
         while (e.hasMoreElements()) {
@@ -26,6 +23,13 @@ public class ExtractMethodExample {
         // 明細の印刷
         System.out.println("name:" + _name);
         System.out.println("amount:" + outstanding);
+    }
+
+    void printBanner() {
+        // バナーの印刷
+        System.out.println("*************************");
+        System.out.println("***** Customer Owes *****");
+        System.out.println("*************************");
     }
 
     /* 以下は書籍では記述されていない無関係な部分 */
