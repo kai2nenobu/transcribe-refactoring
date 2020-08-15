@@ -18,9 +18,8 @@ public class ExtractMethodExample {
     }
 
     void printOwing(double previousAmount) {
-        double outstanding = previousAmount * 1.2;
         printBanner();
-        outstanding = getOutstanding(outstanding);
+        double outstanding = getOutstanding(previousAmount * 1.2);
         printDetails(outstanding);
     }
 
