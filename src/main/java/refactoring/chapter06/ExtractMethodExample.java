@@ -18,17 +18,9 @@ public class ExtractMethodExample {
     }
 
     void printOwing(double previousAmount) {
-        Enumeration e = _orders.elements();
         double outstanding = previousAmount * 1.2;
-
         printBanner();
-
-        // 未払金の計算
-        while (e.hasMoreElements()) {
-            Order each = (Order) e.nextElement();
-            outstanding += each.getAmount();
-        }
-
+        outstanding = getOutstanding(outstanding);
         printDetails(outstanding);
     }
 
@@ -46,6 +38,16 @@ public class ExtractMethodExample {
 
     double getOutstanding() {
         double result = 0.0;
+        Enumeration e = _orders.elements();
+        while (e.hasMoreElements()) {
+            Order each = (Order) e.nextElement();
+            result += each.getAmount();
+        }
+        return result;
+    }
+
+    double getOutstanding(double initialValue) {
+        double result = initialValue;
         Enumeration e = _orders.elements();
         while (e.hasMoreElements()) {
             Order each = (Order) e.nextElement();
