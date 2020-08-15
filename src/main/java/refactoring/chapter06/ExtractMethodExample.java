@@ -9,16 +9,10 @@ import java.util.Vector;
  */
 public class ExtractMethodExample {
     void printOwing() {
-        Enumeration e = _orders.elements();
-        double outstanding = 0.0;
 
         printBanner();
 
-        // 未払金の計算
-        while (e.hasMoreElements()) {
-            Order each = (Order) e.nextElement();
-            outstanding += each.getAmount();
-        }
+        double outstanding = getOutstanding();
 
         printDetails(outstanding);
     }
@@ -33,6 +27,16 @@ public class ExtractMethodExample {
     void printDetails(double outstanding) {
         System.out.println("name:" + _name);
         System.out.println("amount:" + outstanding);
+    }
+
+    double getOutstanding() {
+        double result = 0.0;
+        Enumeration e = _orders.elements();
+        while (e.hasMoreElements()) {
+            Order each = (Order) e.nextElement();
+            result += each.getAmount();
+        }
+        return result;
     }
 
     /* 以下は書籍では記述されていない無関係な部分 */
