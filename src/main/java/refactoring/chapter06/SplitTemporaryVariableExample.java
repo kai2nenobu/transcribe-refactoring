@@ -12,8 +12,8 @@ public class SplitTemporaryVariableExample {
         int secondaryTime = time - _delay;
         if (secondaryTime > 0) {
             double primaryVel = primaryAcc * _delay;
-            double acc = (_primaryForce + _secondaryForce) / _mass;
-            result += primaryVel * secondaryTime + 0.5 * acc * secondaryTime * secondaryTime;
+            final double secondaryAcc = (_primaryForce + _secondaryForce) / _mass;
+            result += primaryVel * secondaryTime + 0.5 * secondaryAcc * secondaryTime * secondaryTime;
         }
         return result;
     }
