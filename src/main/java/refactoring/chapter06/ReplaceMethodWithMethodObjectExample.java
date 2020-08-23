@@ -31,11 +31,15 @@ public class ReplaceMethodWithMethodObjectExample {
         int compute() {
             importantValue1 = (inputVal * quantity) + _account.delta();
             importantValue2 = (inputVal * yearToDate) + 100;
-            if ((yearToDate - importantValue1) > 100)
-                importantValue2 -= 20;
+            importantThing();
             importantValue3 = importantValue2 * 7;
             // 略
             return importantValue3 - 2 * importantValue1;
+        }
+
+        void importantThing() {
+            if ((yearToDate - importantValue1) > 100)
+                importantValue2 -= 20;
         }
     }
 }
